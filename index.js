@@ -40,24 +40,30 @@ app.get("/host", (req, res) => {
  * Server Activation
  */
 
-// attach socket server
-io.attach(server, {
-  pingInterval: 10,
-  pingTimeout: 5,
-  cookie: false
+
+io.on('connection', function(socket){
+  log('a user connected');
+  socket.on('test', function(msg){
+    log("test received:" + msg)
+    io.emit('test', "Server Test");
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
 });
 
 server.listen(port, () => {
-  writeDebug(`Listening to requests on http://localhost:${port}`);
+  log(`Listening to requests on http://localhost:${port}`);
 });
 
-function wDebug(msg) {
+function log(msg) {
   if (debug) {
     console.debug(msg);
   }
 }
 
-function wDir(obj) {
+function dir(obj) {
   if (debug) {
     console.dir(obj, 2, true)
   }
