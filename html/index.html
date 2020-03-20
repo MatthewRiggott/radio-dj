@@ -10,6 +10,33 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    Test
+    <h1 class="center">DJ Radio</h1>
+    <form action="/room" method="POST">
+      <div class="container">
+        <label for="username">Username</label>
+        <input name="username" id="username" type="text">
+      </div>
+      <hr>
+      <div class="container">
+        <button id="hostRoom" name="host">Host</button>
+        <span id="hostNoUser" class="error">username cannot be empty</span>
+      </div>
+      <div class="container">
+        <span>OR</span>
+      </div>
+      <div class="container">
+        <div>
+          <label for="roomCode">Room Code</label>
+        </div>
+        <input id="roomCode" name="roomCode" type="text">
+        <div>
+          <button id="joinRoom" name="join">Join</button>
+          <span id="joinNoUser" class="error">username cannot be empty</span>
+          <span id="joinNoRoom" class="error">room code cannot be empty</span>
+        </div>
+      </div>
+    </form>
+
+
 </body>
 </html>

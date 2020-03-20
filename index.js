@@ -6,11 +6,13 @@
 const express = require("express");
 const path = require("path");
 const createHost = require("./src/Host.js");
+const bodyParser = require('body-parser');
 
 /**
  * App Variables
  */
 const app = express();
+app.use(bodyParser());
 app.use(express.static(__dirname + '/html'));
 
 const server = require("http").createServer(app);
@@ -29,6 +31,12 @@ var OpenConnections = []
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + '/html/index.html'))
 });
+
+app.post("/room", (req, res) => {
+  dir(req.body)
+  console.log("posted")
+
+})
 
 app.get("/host", (req, res) => {
   let newHost = createHost.createHost({ hostIp: "local" })

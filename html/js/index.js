@@ -11,6 +11,41 @@ socket.on("test", function(msg) {
 
 window.onload = function() {
   this.socket.emit("test", "client test message")
+
+  let buttonHost = this.document.getElementById("hostRoom")
+  buttonHost.addEventListener("click", function(ev) {
+    hideErrors()
+    let username = getUserName()
+    if(!username) {
+      document.getElementById("hostNoUser").style.visibility = "visible"
+      ev.preventDefault()
+    }
+  })
+
+  let buttonJoin = this.document.getElementById("joinRoom")
+  buttonJoin.addEventListener("click", function(ev) {
+    hideErrors()
+    let username = getUserName()
+    let roomcode = document.getElementById("roomCode").value
+    document.getElementById("joinNoUser").style.visibility = !username ? "visible" : "hidden"
+    document.getElementById("joinNoRoom").style.visibility = !roomcode ? "visible" : "hidden"
+
+    if(!username || !roomcode) {
+      ev.preventDefault()
+      return
+    }
+  })
+}
+
+function getUserName() {
+  return document.getElementById("username").value;
+}
+
+function hideErrors() {
+  let errors = document.getElementsByClassName("error");
+  for(let i = 0; i < errors.length; i++) {
+    errors[i].style.visibility = "hidden";
+  }
 }
 
 var mockData = [{
