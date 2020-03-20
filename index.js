@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 app.post("/room", (req, res) => {
   dir(req.body)
   console.log("posted")
-
+  res.sendFile(path.join(__dirname + '/html/room.html'))
 })
 
 app.get("/host", (req, res) => {
