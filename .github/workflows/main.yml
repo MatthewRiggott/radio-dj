@@ -7,8 +7,6 @@
     REMOTE_HOST: ${{ secrets.REMOTE_IP }}
     # Remote user
     REMOTE_USER: ${{ secrets.REMOTE_USER }}
-    # Source directory
-    SOURCE: 
     TARGET: /var/www
 name: CI
 
