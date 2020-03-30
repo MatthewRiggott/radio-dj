@@ -29,7 +29,7 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.0.7
       env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_NIX }}
-          ARGS: "-rltgoDzvO --delete"
+          ARGS: "-rltgoDzvO --delete --exclude '*.md' --exclude '*.git' --exclude '*.vscode' --exclude '*.gitignore' --exclude '*.gitignore'"
           SOURCE: ""
           REMOTE_HOST: ${{ secrets.REMOTE_IP }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
