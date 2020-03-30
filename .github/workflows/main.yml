@@ -7,7 +7,7 @@
     REMOTE_HOST: ${{ secrets.REMOTE_IP }}
     # Remote user
     REMOTE_USER: ${{ secrets.REMOTE_USER }}
-    TARGET: /var/www
+    TARGET: "/var/www"
 name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
